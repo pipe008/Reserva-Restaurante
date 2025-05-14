@@ -58,10 +58,10 @@ export default {
   },
   methods: {
     register() {
-      // Aquí iría la llamada al backend (axios, fetch, etc.)
+      
       console.log("Registrando usuario:", this.form);
 
-      // Luego de registrar, redirecciona al login
+      
       this.$router.push('/login');
     },
   },

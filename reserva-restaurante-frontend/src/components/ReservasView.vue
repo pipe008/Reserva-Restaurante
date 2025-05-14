@@ -17,14 +17,13 @@
         <label for="personas">Número de personas</label>
         <input type="number" id="personas" v-model="reserva.personas" min="1" required />
 
-        <label for="mesa">Mesa (opcional)</label>
-        <select id="mesa" v-model="reserva.mesa">
-          <option value="">Selecciona una mesa</option>
-          <option v-for="mesa in mesas" :key="mesa.id" :value="mesa.nombre">{{ mesa.nombre }}</option>
+        <label for="restaurante">Restaurante</label>
+        <select id="restaurante" v-model="reserva.restaurante" required>
+          <option value="">Selecciona un restaurante</option>
+          <option v-for="restaurante in restaurantes" :key="restaurante.id" :value="restaurante.nombre">
+            {{ restaurante.nombre }}
+          </option>
         </select>
-
-        <label for="observaciones">Observaciones</label>
-        <textarea id="observaciones" v-model="reserva.observaciones" rows="3" placeholder="¿Algo especial que debamos saber?"></textarea>
 
         <button type="submit">Reservar</button>
       </form>
@@ -42,20 +41,17 @@ export default {
         fecha: "",
         hora: "",
         personas: 1,
-        mesa: "",
-        observaciones: ""
+        restaurante: ""
       },
-      mesas: [
-        { id: 1, nombre: "Mesa 1" },
-        { id: 2, nombre: "Mesa 2" },
-        { id: 3, nombre: "Terraza" },
-        { id: 4, nombre: "Privada" }
+      restaurantes: [
+        { id: 1, nombre: "Restaurante Central" },
+        { id: 2, nombre: "La Terraza Gourmet" },
+        { id: 3, nombre: "Sabores del Mar" }
       ]
     };
   },
   methods: {
     reservar() {
-      // Aquí se enviaría la reserva al backend
       console.log("Reserva enviada:", this.reserva);
       alert("¡Tu reserva ha sido registrada con éxito!");
     }
@@ -65,7 +61,7 @@ export default {
 
 <style scoped>
 .reservas-wrapper {
-  background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092'); /* Fondo restaurante */
+  background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092'); 
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -110,14 +106,12 @@ label {
 }
 
 input,
-select,
-textarea {
+select {
   padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
-  resize: vertical;
 }
 
 select {
